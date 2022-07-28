@@ -1,0 +1,105 @@
+# custom LinkedList
+class Node:
+    
+    def __init__(self,value):
+        self.value = value 
+        self.next = None 
+
+    
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        
+#display linkedlist            
+    def printList(self):
+        
+        temp = self.head
+        while (temp):
+            print (temp.value)
+            temp = temp.next
+        
+#Adding a new node            
+    def add(self,new):
+        new_node= Node(new)
+        new_node.next=self.head
+        self.head=new_node
+#lengthof the linkedlist
+
+    def get_length(self):
+        count=0
+        itr=self.head
+        while itr:
+            count+=1
+            itr=itr.next
+        return count
+         
+#removing a  node reffered by location 
+
+    def remove_at(self,index):
+        if index<0 or index>=self.get_length():
+            raise Exception("invalid index")
+            
+        if index==0:
+            self.head=self.head.next
+            return
+        
+        count= 0
+        itr=self.head
+        while itr:
+            if count==index -1:
+                itr.next=itr.next.next
+                break
+            itr=itr.next
+            count+=1
+            
+#removing a node reffered by value
+
+    def remove(self, value):
+        
+        previous_node, matched_node = self.find_value(value)
+        previous_node.next = matched_node.next
+
+    def find_value(self, value):
+        previous, current = self.head, self.head.next
+
+        while current is not None:
+            if current.value == value:
+                return previous, current
+
+            previous, current = current, current.next
+
+        raise ValueError(f'value not in list')
+        
+#deleting the liinkedlist
+
+    def deletelist(self):
+        current=self.head
+        while current:
+            next_to_current=current.next
+            del current.value
+            current =next_to_current
+
+#inverting linkedlist
+    def invertion_list(self):
+              
+        prev=None
+        current=self.head
+        while(current is not None):
+            next=current.next
+            current.next=prev
+            prev=current
+        self.head=prev
+          
+        
+if __name__=='__main__':
+    llist= LinkedList()
+    llist.add(5)
+    llist.add(4)
+    llist.add(90)
+    llist.add(95)
+    llist.add(78)
+    llist.add(35)
+    llist.add(24)
+    llist.invertion_list()
+
+    
