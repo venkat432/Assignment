@@ -1,1 +1,3 @@
 # Assignment
+Checkerboard patterns are distinct and easy to detect in an image. Not only that, the corners of squares on the checkerboard are ideal for localizing them because they have sharp gradients in two directions. In addition, these corners are also related by the fact that they are at the intersection of checkerboard lines. All these facts are used to robustly locate the corners of the squares in a checkerboard pattern.
+circular patterns are also used in calibration process where as it is complex to find the subpixel corners in circular patterns whereas in checkboard pattern it is simplified to find the corners of the subpixels and is easy to relate to 3D points in real world to the 2D points in the image plane.
